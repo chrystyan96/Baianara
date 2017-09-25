@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+// Conexão com o banco de dados 
+require_once '../banco/conexao.php';
+require_once '../acesso/check.php';
+
+$con = new conexao();
+
+$nome = $_SESSION["login"]["nome"];
+
+include '../banco/siteDAO.php';
+$siteDAO = new siteDAO();
+
+$pedidos = $siteDAO->ultimosPedidosCliente($nome);
+$query = "SELECT * FROM login WHERE nome='$nome'";
+$result = mysqli_query($con->connect(), $query);
+while ($rowsID = mysqli_fetch_assoc($result)) {
+    $dadosID = $rowsID['id'];
+    $fidelidade = $rowsID['fidelidade'];
+    $gratuidade = $rowsID['gratuidade'];
+}
+$siteDAO->atualizarGratuidade($dadosID);
+$avisos = $siteDAO->avisos();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

@@ -1,2 +1,2 @@
 <?php 
-header ("Location: production/login.html");
+header ("Location: pages/login.php");
