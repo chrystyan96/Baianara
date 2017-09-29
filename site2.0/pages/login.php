@@ -39,14 +39,15 @@ else :
                 <a class="hiddenanchor" id="signup"></a>
                 <a class="hiddenanchor" id="signin"></a>
                 <a class="hiddenanchor" id="forgotPass"></a>
+                
                 <div class="alert alert-success" style="display: none;">
-                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                 </div>
                 <div class="alert alert-danger" style="display: none;">
-                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                 </div>
                 <div class="alert alert-warning" style="display: none;">
-                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
                 </div>
 
                 <div class="login_wrapper">

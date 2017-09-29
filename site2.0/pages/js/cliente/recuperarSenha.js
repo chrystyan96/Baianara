@@ -7,7 +7,6 @@ $('#recCad').click(function () {
     });
     promise.done(function (resposta) {
         NProgress.done();
-        alert(resposta);
         if (resposta.match(/Enviamos um link para a redefinição da senha para o endereço de e-mail informado!/)) {
             $(".alert-success button").after('<span><strong>Sucesso!</strong> Enviamos um link para a redefinição da senha para o endereço de e-mail informado!</span>');
             $('.alert-success').fadeIn('slow');
