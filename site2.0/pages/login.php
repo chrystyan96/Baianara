@@ -107,7 +107,7 @@ else :
                                     <input type="email" class="form-control" placeholder="Email" id="#emailCad" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="phone" class="form-control" placeholder="Telefone" id="#telefone" required>
+                                    <input type="text" class="form-control" placeholder="(__) _____-____" id="#telefone" data-inputmask="'mask' : '(99) 99999-9999'" required>
                                 </div>
                             </fieldset>
                             <div>
@@ -173,6 +173,8 @@ else :
             <script src="../vendors/nprogress/nprogress.js"></script>
             <!-- validator -->
             <script src="../vendors/validator/validator.js"></script>
+            <!-- jquery.inputmask -->
+            <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
             <script type="text/javascript" charset="utf-8" src="js/novoCadastro.js"></script>
             <script type="text/javascript" charset="utf-8" src="js/cliente/recuperarSenha.js"></script>
         </div>
