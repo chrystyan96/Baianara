@@ -2,13 +2,13 @@
 error_reporting(E_ALL ^ E_WARNING);
 session_start();
 require_once '../banco/conexao.php';
-if (isLoggedIn()):
-    if ($_SESSION['login']['permicao'] === "1"):
+if (isLoggedIn()) :
+    if ($_SESSION['login']['permicao'] === "1") :
         header("location: adm.php");
-    else:
+    else :
         header("location: cliente.php");
     endif;
-else:
+else :
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -19,7 +19,7 @@ else:
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <title>Baianará | Login</title>
+            <title>Login | Baianará</title>
 
             <!-- Bootstrap -->
             <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,6 +39,15 @@ else:
                 <a class="hiddenanchor" id="signup"></a>
                 <a class="hiddenanchor" id="signin"></a>
                 <a class="hiddenanchor" id="forgotPass"></a>
+                <div class="alert alert-success" style="display: none;">
+                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+                <div class="alert alert-danger" style="display: none;">
+                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+                <div class="alert alert-warning" style="display: none;">
+                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
 
                 <div class="login_wrapper">
                     <div class="animate form login_form">
@@ -47,10 +56,10 @@ else:
                                 <h1>Login</h1>
                                 <fieldset>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nome de Usuário" name="login">
+                                        <input type="text" class="form-control" required="required" placeholder="Nome de Usuário" name="login">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Senha" name="senha">
+                                        <input type="password" class="form-control" required="required" placeholder="Senha" name="senha">
                                     </div>
                                 </fieldset>
                                 <div>
@@ -81,19 +90,29 @@ else:
                     <section class="login_content">
                         <form>
                             <h1>Criar conta</h1>
+                            <fieldset>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nome de Usuário" id="#loginCad" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Senha" id="#senhaCad" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Confirmar Senha" id="#confirmSenhaCad" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nome" id="#nomeCad" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email" id="#emailCad" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="phone" class="form-control" placeholder="Telefone" id="#telefone" required>
+                                </div>
+                            </fieldset>
                             <div>
-                                <input type="text" class="form-control" placeholder="Username" required="" />
+                                <button class="btn btn-default submit" href="#signin" id="#saveCad">Enviar</button>
                             </div>
-                            <div>
-                                <input type="email" class="form-control" placeholder="Email" required="" />
-                            </div>
-                            <div>
-                                <input type="password" class="form-control" placeholder="Password" required="" />
-                            </div>
-                            <div>
-                                <a class="btn btn-default submit" href="index.html">Enviar</a>
-                            </div>
-
                             <div class="clearfix"></div>
 
                             <div class="separator">
@@ -112,18 +131,18 @@ else:
                         </form>
                     </section>
                 </div>
+                
                 <div id="forgotPass" class="animate form forgot_form">
                     <section class="login_content">
                         <form>
                             <h1>Recuperar Senha</h1>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Username" required="" id="userRec"/>
-                            </div>
-                            <div>
-                                <input type="email" class="form-control" placeholder="Email" required="" id="emailRec"/>
-                            </div>
-                            <div>
-                                <button class="btn btn-default submit" id='recCad'>Recuperar</button>
+                            <fieldset>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" required placeholder="Email" id="emailRec">
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                <button type="submit" href="#signin" class="btn btn-default submit" id='recCad'>Recuperar</>
                             </div>
 
                             <div class="clearfix"></div>
@@ -145,6 +164,16 @@ else:
                     </section>
                 </div>
             </div>
+            <script type="text/javascript" charset="utf-8" src="../assets/js/jquery-3.1.1.min.js"></script>
+            <script type="text/javascript" charset="utf-8" src="../assets/js/jquery.js"></script>
+            <script type="text/javascript" charset="utf-8" src="js/geralSite.js"></script>
+            <!-- FastClick -->
+            <script src="../vendors/fastclick/lib/fastclick.js"></script>
+            <!-- NProgress -->
+            <script src="../vendors/nprogress/nprogress.js"></script>
+            <!-- validator -->
+            <script src="../vendors/validator/validator.js"></script>
+            <script type="text/javascript" charset="utf-8" src="js/novoCadastro.js"></script>
             <script type="text/javascript" charset="utf-8" src="js/cliente/recuperarSenha.js"></script>
         </div>
     </body>

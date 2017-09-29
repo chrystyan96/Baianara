@@ -17,14 +17,16 @@ $mail->IsHTML(true);
 $mail->SMTPDebug = 2; // Debug
 
 $email = $_GET['email'];
-$email = preg_replace('/[^[:alnum:]_.-@]/', '', $_GET['email']);
 
 $query = "SELECT * FROM login WHERE email='$email'";
 $result = mysqli_query($con->connect(), $query);
 $numRows = mysqli_num_rows($result);
 $rows = mysqli_fetch_array($result);
 
-if ($numRows == 1) {
+if(!$email || $email === 0){
+    echo 'vazio';
+}
+else if ($numRows == 1) {
     $id = $rows['id'];
     $chave = md5($rows['id'] . $rows['senha']);
     $query2 = "INSERT INTO recuperarSenha(idUser, email, chave) VALUES('$id', '$email', '$chave')";
@@ -72,10 +74,10 @@ if ($numRows == 1) {
             echo $e->errorMessage(); //Mensagem de erro costumizada do PHPMailer
         }
     } else {
-        echo '<p>Não foi possível gerar o endereço único</p>';
+        echo 'Não foi possível gerar o endereço único';
     }
 } else {
-    echo '<p>Esse utilizador não existe</p>';
+    echo 'Esse utilizador não existe';
 }
 ?>
 

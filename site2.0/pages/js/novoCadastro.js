@@ -1,15 +1,12 @@
 $('#saveCad').click(function () {
-    var login = $('#novoCadastro .newCad #Cad #loginCad').val();
-    var senha = $('#novoCadastro .newCad #Cad #senhaCad').val();
-    var confSenha = $('#novoCadastro .newCad #Cad #confirmSenhaCad').val();
-    var nome = $('#novoCadastro .newCad #Cad #nomeCad').val();
-    var email = $('#novoCadastro .newCad #Cad #emailCad').val();
-    var telefone = $('#novoCadastro .newCad #Cad #telefone').val();
+    var login = $('#loginCad').val();
+    var senha = $('#senhaCad').val();
+    var confSenha = $('#confirmSenhaCad').val();
+    var nome = $('#nomeCad').val();
+    var email = $('#emailCad').val();
+    var telefone = $('#telefone').val();
 
-    if (login === '') {
-        bootbox.alert("O campo Login é obrigatório!");
-        return false;
-    } else if (senha.length < 8) {
+    if (senha.length < 8) {
         bootbox.alert("O campo Senha deve ter no minímo 8 dígitos!");
         return false;
     } else if (confSenha.length < 8) {

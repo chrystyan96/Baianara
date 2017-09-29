@@ -31,7 +31,7 @@ if ($row) {
         $resultSenha = mysqli_query($con->connect(), $querySenha);
         $queryDelete = "DELETE FROM recuperarSenha WHERE email='$email' AND chave='$chave'";
         mysqli_query($con->connect(), $queryDelete);
-        echo 'Senha alterada com sucesso! Retornando a tela de login em 5 segundos ou clique em OK para ir agora...';
+        echo 'Senha alterada com sucesso! Retornando a tela de login em 5 segundos...';
     } else{
         echo 'Erro na alteração da senha...';
     }

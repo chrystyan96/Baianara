@@ -15,21 +15,21 @@ var validator = (function($){
     /* general text messages
     */
     message = {
-        invalid         : 'invalid input',
-        checked         : 'must be checked',
-        empty           : 'please put something here',
-        min             : 'input is too short',
-        max             : 'input is too long',
-        number_min      : 'too low',
-        number_max      : 'too high',
-        url             : 'invalid URL',
-        number          : 'not a number',
-        email           : 'email address is invalid',
-        email_repeat    : 'emails do not match',
-        password_repeat : 'passwords do not match',
-        repeat          : 'no match',
-        complete        : 'input is not complete',
-        select          : 'Please select an option'
+        invalid         : 'Entrada inválida',
+        checked         : 'Uma das opções devem ser selecionadas',
+        empty           : 'Escreva algo',
+        min             : 'A entrada é muito curta',
+        max             : 'A entrada é muito longa',
+        number_min      : 'Muito baixo',
+        number_max      : 'Muito alto',
+        url             : 'URL inválida',
+        number          : 'Não é um número',
+        email           : 'Endereço de email inválido',
+        email_repeat    : 'Os emails não combinam',
+        password_repeat : 'As senhas não combinam',
+        repeat          : 'Não combina',
+        complete        : 'A entrada não está completa',
+        select          : 'Selecione uma opção'
     };
 
     if(!window.console){
