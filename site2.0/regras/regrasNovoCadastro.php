@@ -16,15 +16,23 @@ $options = [
     ];
 $senhaHash = password_hash($senha, PASSWORD_DEFAULT, $options);
 
-$query = "SELECT * FROM login WHERE login='$login' OR email='$email'";
+$query = "SELECT * FROM login WHERE login='$login'";
 $result = mysqli_query($con->connect(), $query);
 $numRows = mysqli_num_rows($result);
 
 if($numRows > 0){
-    echo 'Login e/ou Email já cadastrados! Digite informações diferentes...';
+    echo 'Login já cadastrado! Digite informações diferentes...';
+    exit;
+}
+
+$query2 = "SELECT * FROM login WHERE email='$email'";
+$result2 = mysqli_query($con->connect(), $query2);
+$numRows2 = mysqli_num_rows($result2);
+
+if($numRows2 > 0){
+    echo 'Email já cadastrado! Digite informações diferentes...';
     exit;
 }
 $cli->novoCadastro($con->connect(), $login, $senhaHash, $nome, $email, $telefone);
 echo 'Cadastro concluído com sucesso!';
 ?>
-

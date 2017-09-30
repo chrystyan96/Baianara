@@ -745,10 +745,6 @@ $.extend( $.validator, {
 			if ( normalizer ) {
 				val = normalizer.call( element, val );
 
-				if ( typeof val !== "string" ) {
-					throw new TypeError( "The normalizer should return a string value." );
-				}
-
 				// Delete the normalizer from rules to avoid treating it as a pre-defined method.
 				delete rules.normalizer;
 			}
@@ -1124,7 +1120,19 @@ $.extend( $.validator, {
 				.removeData( "validator" )
 				.find( ".validate-equalTo-blur" )
 					.off( ".validate-equalTo" )
-					.removeClass( "validate-equalTo-blur" );
+					.removeClass( "validate-equalTo-blur" )
+				.find( ".validate-lessThan-blur" )
+					.off( ".validate-lessThan" )
+					.removeClass( "validate-lessThan-blur" )
+				.find( ".validate-lessThanEqual-blur" )
+					.off( ".validate-lessThanEqual" )
+					.removeClass( "validate-lessThanEqual-blur" )
+				.find( ".validate-greaterThanEqual-blur" )
+					.off( ".validate-greaterThanEqual" )
+					.removeClass( "validate-greaterThanEqual-blur" )
+				.find( ".validate-greaterThan-blur" )
+					.off( ".validate-greaterThan" )
+					.removeClass( "validate-greaterThan-blur" );
 		}
 
 	},
@@ -1353,7 +1361,7 @@ $.extend( $.validator, {
 			if ( this.checkable( element ) ) {
 				return this.getLength( value, element ) > 0;
 			}
-			return value.length > 0;
+			return value !== undefined && value !== null && value.length > 0;
 		},
 
 		// https://jqueryvalidation.org/email-method/

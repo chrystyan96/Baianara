@@ -1,4 +1,5 @@
 <?php
+//https://stackoverflow.com/questions/14913677/jquery-validation-plugin-message-style
 error_reporting(E_ALL ^ E_WARNING);
 session_start();
 require_once '../banco/conexao.php';
@@ -31,7 +32,8 @@ else :
             <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
 
             <!-- Custom Theme Style -->
-            <link href="../build/css/custom.min.css" rel="stylesheet">
+            <link href="../build/css/custom.css" rel="stylesheet">
+            
         </head>
 
         <body class="login">
@@ -53,14 +55,15 @@ else :
                 <div class="login_wrapper">
                     <div class="animate form login_form">
                         <section class="login_content">
+                        
                             <form id="login" action="../regras/regrasLogin.php" method="post">
                                 <h1>Login</h1>
                                 <fieldset>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" required="required" placeholder="Nome de Usuário" name="login">
+                                        <input type="text" class="form-control"=" placeholder="Nome de Usuário" name="login">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" required="required" placeholder="Senha" name="senha">
+                                        <input type="password" class="form-control"=" placeholder="Senha" name="senha">
                                     </div>
                                 </fieldset>
                                 <div>
@@ -88,27 +91,26 @@ else :
                 </div>
 
                 <div id="register" class="animate form registration_form">
-                    <section class="login_content">
-                        <form role="form" class="parsley-validate" data-validate="parsley">
+                    <section class="login_content"><!-- form - id="validarNovaConta" -->
+                        <form id="validarNovaConta" method="post" action="" novalidate="novalidate" autocomplete="off">
                             <h1>Criar conta</h1>
-
                             <div class="item form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Nome de Usuário" id="loginCad" autocomplete="off" data-parsley-required>
+                                <input id="loginCad" class="form-control" name="newLogin" placeholder="Nome de Usuário" type="text">
                             </div>
                             <div class="item form-group">
-                                <input type="password" name="password" data-parsley-equalto="#confirmSenhaCad" class="form-control" placeholder="Senha" id="senhaCad" data-parsley-required minlength="8">
+                                <input id="senhaCad" type="password" name="newPass" placeholder="Senha" class="form-control">
                             </div>
                             <div class="item form-group">
-                                <input type="password" name="password2" data-parsley-equalto="#senhaCad" class="form-control" placeholder="Confirmar Senha" id="confirmSenhaCad" data-parsley-required>
+                                <input id="confirmSenhaCad" type="password" name="confNewPass" placeholder="Confirmar Senha" class="form-control">
                             </div>
                             <div class="item form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Nome" id="nomeCad" data-parsley-required minlength="5">
+                                <input id="nomeCad" class="form-control" name="newNome" placeholder="Nome" type="text">
                             </div>
                             <div class="item form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Email" id="emailCad" data-parsley-required data-parsley-type="email" data-parsley-trigger="change" autocomplete="off">
+                                <input type="email" placeholder="Email" id="emailCad" name="newEmail" class="form-control ">
                             </div>
                             <div class="item form-group">
-                                <input type="text" name="phone" class="form-control" placeholder="(__) _____-____" id="telefone" data-parsley-required data-inputmask="'mask' : '(99) 99999-9999'" autocomplete="off">
+                                <input type="text" name="newTelefone" class="form-control" placeholder="(__) _____-____" id="telefone" data-inputmask="'mask' : '(99) 99999-9999'">
                             </div>
                             <div>
                                 <a class="btn btn-default submit" id="saveCad">Enviar</a>
@@ -117,7 +119,7 @@ else :
 
                             <div class="separator">
                                 <p class="change_link">Já é um membro ?
-                                    <a href="#" class="to_register"> Entrar </a>
+                                    <a href="#signin" class="to_register"> Entrar </a>
                                 </p>
 
                                 <div class="clearfix"></div>
@@ -138,7 +140,7 @@ else :
                             <h1>Recuperar Senha</h1>
                             <fieldset>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" required placeholder="Email" id="emailRec">
+                                    <input type="email" class="form-control" placeholder="Email" id="emailRec">
                                 </div>
                             </fieldset>
                             <div class="form-group">
@@ -164,102 +166,27 @@ else :
                     </section>
                 </div>
             </div>
-            <script type="text/javascript" charset="utf-8" src="../assets/js/jquery-3.1.1.min.js"></script>
+            <script src="../vendors/jquery/dist/jquery.min.js"></script>
             <script type="text/javascript" charset="utf-8" src="../assets/js/jquery.js"></script>
+            <script type="text/javascript" src="../vendors/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
             <script type="text/javascript" charset="utf-8" src="js/geralSite.js"></script>
             <!-- FastClick -->
             <script src="../vendors/fastclick/lib/fastclick.js"></script>
             <!-- NProgress -->
             <script src="../vendors/nprogress/nprogress.js"></script>
             <!-- jquery.validator -->
-<!--        <script src="../vendors/jquery.validator/dist/jquery.validate.js"></script>
+            <script src="../vendors/jquery.validator/dist/jquery.validate.js"></script>
             <script src="../vendors/jquery.validator/dist/additional-methods.js"></script>
-            <script src="../vendors/jquery.validator/dist/localization/messages_pt_BR.js"></script>-->
-            <!-- Parsley -->
-            <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+            <script src="../vendors/jquery.validator/dist/localization/messages_pt_BR.js"></script>
+            <!-- validator -->
+   <!--     <script src="../vendors/validator/validator.js"></script> -->
             <!-- jquery.inputmask -->
             <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
             <script type="text/javascript" charset="utf-8" src="js/novoCadastro.js"></script>
             <script type="text/javascript" charset="utf-8" src="js/cliente/recuperarSenha.js"></script>
 
             <!-- Custom Theme Scripts -->
-            <script src="../build/js/custom.min.js"></script>
+            <script src="../build/js/custom.js"></script>
         </div>
     </body>
 </html>
-
-<script type="text/javascript">
-    $(function () {
-        $('.parsley-validate').parsley();
-    })
-</script>
-
-
-<!--<script type="text/javascript">
-$(document).ready(function () {
-    $('#validarNovaConta').validate({
-        rules: {
-            newLogin: {
-                required: true,
-                minlength: 5
-            },
-            newPass: {
-                required: true,
-                minlength: 8
-            },
-            confNewPass: {
-                required: true,
-                minlength: 8
-            },
-            newNome: {
-                required: true,
-                minlength: 5
-            },
-            newEmail: {
-                required: true
-            },
-            newTelefone: {
-                required: true
-            }
-        },
-        messages: {
-            newLogin: {
-                required: "Por favor, informe seu nome de usuário",
-                minlength: "O nome deve ter pelo menos 5 caracteres"
-            },
-            newPass: {
-                required: "Por favor, informe sua senha",
-                minlength: "O nome deve ter pelo menos 8 caracteres"
-            },
-            confNewPass: {
-                required: "Por favor, confirme sua senha",
-                minlength: "O nome deve ter pelo menos 8 caracteres"
-            },
-            newNome: {
-                required: "Por favor, informe seu nome",
-                minlength: "O nome deve ter pelo menos 5 caracteres"
-            },
-            newEmail: {
-                required: "Por favor, informe seu email"
-            },
-            newTelefone: {
-                required: "Por favor, informe seu telefone"
-            }
-        },
-        ignore: "",
-        errorClass: 'fieldError',
-        onkeyup: false,
-        onblur: false,
-        errorElement: 'label',
-        submitHandler: function () {
-            alert("alert");
-        }
-    });
-});
-</script>
-
-<script type="text/javascript">
-$(document).on("click", "#saveCad", function () {
-$("#validarNovaConta").valid();
-});
-</script>-->

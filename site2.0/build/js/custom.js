@@ -179,11 +179,11 @@ $(document).ready(function() {
 // /Panel toolbox
 
 // Tooltip
-$(document).ready(function() {
+/* $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip({
         container: 'body'
     });
-});
+}); */
 // /Tooltip
 
 // Progressbar
@@ -301,7 +301,7 @@ if (typeof NProgress != 'undefined') {
 
 	
 	  //hover and retain popover when on popover content
-        var originalLeave = $.fn.popover.Constructor.prototype.leave;
+        /* var originalLeave = $.fn.popover.Constructor.prototype.leave;
         $.fn.popover.Constructor.prototype.leave = function(obj) {
           var self = obj instanceof this.constructor ?
             obj : $(obj.currentTarget)[this.type](this.getDelegateOptions()).data('bs.' + this.type);
@@ -330,7 +330,7 @@ if (typeof NProgress != 'undefined') {
             show: 50,
             hide: 400
           }
-        });
+        }); */
 
 
 	function gd(year, month, day) {
