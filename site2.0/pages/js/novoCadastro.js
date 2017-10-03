@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#validarNovaConta').validate({       
+    $('#validarNovaConta').validate({
         rules: {
             newLogin: {
                 required: true,
@@ -55,10 +55,10 @@ $(document).ready(function () {
         ignore: "",
         errorClass: 'fieldError',
         onblur: true,
-        errorElement: 'label',
-        submitHandler: function () {
-            alert("alert");
-        }
+        errorElement: 'div',
+        submitHandler: function (form) {
+            _submit();
+        },
     });
     $.validator.addMethod("email", function (value, element) {
         return this.optional(element) || /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/i.test(value);
@@ -73,7 +73,8 @@ $(document).ready(function () {
     });
 });
 
-$('saveCad').click(function () {
+function _submit() {
+    //$('#saveCad').click(function () {
     NProgress.start();
     var login = $('#loginCad').val();
     var senha = $('#senhaCad').val();
@@ -88,25 +89,29 @@ $('saveCad').click(function () {
     });
     promise.done(function (resposta) {
         NProgress.done();
-        if (result.match(/Cadastro concluído com sucesso!/)) {
-            window.location.replace("#signin");
+        if (resposta.match(/Login já cadastrado! Digite informações diferentes.../)) {
+            closeAll();
+            $(".alert-warning a").after('<span><strong>Atenção!</strong> Login já cadastrado! Digite informações diferentes...</span>');
+            $('.alert-warning').fadeIn('slow');
+        } else if (resposta.match(/Email já cadastrado! Digite informações diferentes.../)) {
+            closeAll();
+            $(".alert-warning a").after('<span><strong>Atenção!</strong> Email já cadastrado! Digite informações diferentes...</span>');
+            $('.alert-warning').fadeIn('slow');
+        } else if (resposta.match(/Cadastro concluído com sucesso!/)) {
+            closeAll();
+            $(".alert-success a").after('<span><strong>Sucesso!</strong> Usuário cadastrado com sucesso!</span>');
+            $('.alert-success').fadeIn('slow');
             $('#loginCad').val("");
             $('#senhaCad').val("");
             $('#confirmSenhaCad').val("");
             $('#nomeCad').val("");
             $('#emailCad').val("");
             $('#telefone').val("");
-        } else if (result.match(/Login já cadastrado! Digite informações diferentes.../)) {
-            $(".alert-warning a").after('<span><strong>Atenção!</strong> Login já cadastrado! Digite informações diferentes...</span>');
-            $('.alert-warning').fadeIn('slow');
-            window.location.replace("#signup");
-        } else if (result.match(/Email já cadastrado! Digite informações diferentes.../)) {
-            $(".alert-warning a").after('<span><strong>Atenção!</strong> Email já cadastrado! Digite informações diferentes...</span>');
-            $('.alert-warning').fadeIn('slow');
-            window.location.replace("#signup");
+            window.location.replace("#signin");
         }
     });
-});
+    //});
+}
 
 function closeSuccess() {
     $(".alert-success span").remove();

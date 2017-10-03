@@ -1,4 +1,35 @@
-$('#recCad').click(function () {
+$(document).ready(function () {
+    $('#recuperarSenhaValidar').validate({
+        rules: {
+            recEmail: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            recEmail: {
+                required: "Por favor, informe seu email"
+            }
+        },
+        ignore: "",
+        errorClass: 'fieldError',
+        onblur: true,
+        errorElement: 'div',
+        submitHandler: function (form) {
+            _submit();
+        },
+    });
+    $.validator.addMethod("email", function (value, element) {
+        return this.optional(element) || /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/i.test(value);
+    }, "Por favor, entre com um endereço de email válido");
+
+    $(document).on("click", "#recCad", function () {
+        $("#recuperarSenhaValidar").valid();
+    });
+});
+
+function _submit() {
+    //$('#recCad').click(function () {
     NProgress.start();
     var email = $('#emailRec').val();
 
@@ -11,6 +42,8 @@ $('#recCad').click(function () {
             closeAll();
             $(".alert-success a").after('<span><strong>Sucesso!</strong> Enviamos um link para a redefinição da senha para o endereço de e-mail informado!</span>');
             $('.alert-success').fadeIn('slow');
+            $('#emailRec').val("");
+            window.location.replace("#signin");
             //$('#bsalertEnvio').show();
         } else if (resposta.match(/Não foi possível gerar o endereço único/)) {
             closeAll();
@@ -20,13 +53,10 @@ $('#recCad').click(function () {
             closeAll();
             $(".alert-danger a").after('<span><strong>Erro!</strong> Não foi possível achar o usuário! Entre em contato com algum ADMINISTRADOR.</span>');
             $('.alert-danger').fadeIn('slow');
-        } else if (resposta.match(/vazio/)) {
-            closeAll();
-            $(".alert-danger a").after('<span><strong>Erro!</strong> Entre com algum email válido para a recuperação de senha!</span>');
-            $('.alert-danger').fadeIn('slow');
         }
     });
-});
+    //});
+}
 
 $('.salvarSenha').click(function () {
     NProgress.start();

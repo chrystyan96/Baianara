@@ -113,7 +113,7 @@ else :
                                 <input type="text" name="newTelefone" class="form-control" placeholder="(__) _____-____" id="telefone" data-inputmask="'mask' : '(99) 99999-9999'">
                             </div>
                             <div>
-                                <a class="btn btn-default submit" id="saveCad">Enviar</a>
+                                <button type="submit" class="btn btn-default submit" id="saveCad">Enviar</button>
                             </div>
                             <div class="clearfix"></div>
 
@@ -136,15 +136,15 @@ else :
 
                 <div id="forgotPass" class="animate form forgot_form">
                     <section class="login_content">
-                        <form role="form" data-toggle="validator">
+                        <form role="form" id="recuperarSenhaValidar">
                             <h1>Recuperar Senha</h1>
                             <fieldset>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" id="emailRec">
+                                <div class="item form-group">
+                                    <input type="email" placeholder="Email" id="emailRec" name="recEmail" class="form-control ">
                                 </div>
                             </fieldset>
                             <div class="form-group">
-                                <a type="submit" href="#signin" class="btn btn-default submit" id='recCad'> Recuperar </a>
+                                <button type="submit" class="btn btn-default submit" id='recCad'> Recuperar </button>
                             </div>
 
                             <div class="clearfix"></div>
@@ -168,7 +168,7 @@ else :
             </div>
             <script src="../vendors/jquery/dist/jquery.min.js"></script>
             <script type="text/javascript" charset="utf-8" src="../assets/js/jquery.js"></script>
-            <script type="text/javascript" src="../vendors/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+            <script src="http://malsup.github.com/jquery.form.js"></script> 
             <script type="text/javascript" charset="utf-8" src="js/geralSite.js"></script>
             <!-- FastClick -->
             <script src="../vendors/fastclick/lib/fastclick.js"></script>

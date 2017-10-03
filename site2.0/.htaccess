@@ -1,0 +1,6 @@
+ErrorDocument 403 /baianara/site2.0/errorpages/403.html
+ErrorDocument 404 /baianara/site2.0/errorpages/404.html
+ErrorDocument 500 /baianara/site2.0/errorpages/500.html
+
+# https://stackoverflow.com/questions/14155849/strange-htaccess-errordocument-error
+# http://www.codigosnaweb.com/forum/viewtopic.php?t=3091
