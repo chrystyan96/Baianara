@@ -1,10 +1,6 @@
 <?php
 //https://stackoverflow.com/questions/14913677/jquery-validation-plugin-message-style
-http_response_code(404);
-include_once '../errorpages/404.html';
-if (empty($_GET['email']) || empty($_GET['chave'])) {
-    die();
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,9 +92,17 @@ if (empty($_GET['email']) || empty($_GET['chave'])) {
                         </div>
                     </div>
                     <?php
+                } else {
+                    http_response_code(404);
+                    include_once '../errorpages/404.html';
+                    die();
                 }
                 ?>
                 <?php
+            } else {
+                http_response_code(404);
+                include_once '../errorpages/404.html';
+                die();
             }
             ?>
             <script src="../vendors/jquery/dist/jquery.min.js"></script>
